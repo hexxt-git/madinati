@@ -291,18 +291,7 @@ export default function Report() {
                     </div>
                 );
             case "number":
-                return (
-                    <Input
-                        type="number"
-                        {...register(field.name)}
-                        onInput={(e) => {
-                            const value = parseFloat(e.currentTarget.value);
-                            if (!isNaN(value)) {
-                                setValue(field.name, value);
-                            }
-                        }}
-                    />
-                );
+                return <Input type="number" {...register(field.name, { valueAsNumber: true })} />;
             default:
                 return <Input type={field.type} {...register(field.name)} />;
         }

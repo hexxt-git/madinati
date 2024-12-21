@@ -1,7 +1,7 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import {mergePath} from '@/lib/calculateDirections'
 import { ArrowRight } from "lucide-react";
-import type { Direction } from "@/lib/types";
+import type { Direction } from "@/components/schemas/calculations";
 import React from "react";
 
 function formatDuration(minutes: number): string {

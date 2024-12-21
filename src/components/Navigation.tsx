@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
 import { useState } from "react";
 import { calculateDirections } from "@/lib/calculateDirections";
-import type { Direction } from "@/lib/types";
+import type { Direction } from "@/components/schemas/calculations";
 import { toast } from "sonner";
 import Options from "./Options";
 
@@ -47,7 +47,11 @@ export default function Navigation() {
                         <span className="text-lg -m-s-6">🔎</span> Find Route
                     </Button>
                 </div>
-                {directions.length ? <DirectionsCard directions={directions} /> : <TrendingCard />}
+                {directions.length ? (
+                    <DirectionsCard directions={directions} />
+                ) : (
+                    <TrendingCard set_destination_location={set_destination_location} />
+                )}
             </div>
             <Options />
         </div>

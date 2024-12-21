@@ -1,4 +1,4 @@
-import type { Place, Station } from "./types";
+import type { Place, Station } from "../components/schemas/calculations";
 
 export const places: Place[] = require("./places.json");
 

@@ -1,4 +1,4 @@
-import { Direction, Station } from "./types";
+import { Direction, Station } from "../components/schemas/calculations";
 import { stations } from "./places";
 import { Bus, Footprints, TramFront, Train, CableCar } from "lucide-react";
 import { toast } from "sonner";
@@ -215,28 +215,25 @@ function calculateDirections(departure: string, destination: string): Direction[
 }
 
 function mergePath(path: Direction[]): Direction[] {
-    // Merge consecutive tram and metro segments
     const mergedPath: Direction[] = [];
     for (let i = 0; i < path.length; i++) {
         const current = path[i];
         if (mergedPath.length > 0) {
             const last = mergedPath[mergedPath.length - 1];
-            if (
-                (last.method === "tramway" || last.method === "metro") &&
-                (current.method === "tramway" || current.method === "metro")
-            ) {
+            if (last.method === current.method) {
                 // Extract existing station count
                 const match = last.to.match(/\((\d+) station/);
                 const stationCount = match ? parseInt(match[1]) + 1 : 2;
                 last.to = `${current.to} (${stationCount} station${stationCount > 1 ? "s" : ""})`;
                 last.distance += current.distance;
                 last.duration += current.duration;
+                last.cost += current.cost;
+                last.to_coords = current.to_coords;
                 continue;
             }
         }
         mergedPath.push({ ...current });
     }
-
     return mergedPath;
 }
 

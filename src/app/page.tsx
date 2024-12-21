@@ -12,7 +12,7 @@ export default function Home() {
             <Report />
             <div className="relative flex flex-col items-center justify-center lg:min-h-screen gap-8 p-4 pb-16">
                 <div className="lg:w-[80%] mx-auto px-4 mt-6">
-                    <h1 className="text-3xl font-bold text-primary drop-shadow-sm">Madinati Demo 🤖</h1>
+                    <h1 className="text-3xl font-bold text-primary drop-shadow-sm">Madinati Demo 🤖 🇩🇿</h1>
                 </div>
                 <a
                     href="/#article"
