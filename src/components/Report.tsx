@@ -120,7 +120,6 @@ export default function Report() {
         "missing road signs?",
         "flooded streets?",
         "broken traffic lights?",
-        "animal on the road?",
         "debris on the road?",
         "fallen trees?",
         "road rage incidents?",
@@ -149,9 +148,8 @@ export default function Report() {
     const onSubmit = async (data: ReportFormData) => {
         setIsSubmitting(true);
         try {
-            // await axios.post("/api/report", { ...data, location });
             console.dir({ ...data, location }, { depth: null });
-            await new Promise((resolve) => setTimeout(resolve, 2000));
+            await axios.post("http://localhost:8000/report", { ...data, location });
             toast.success("Report submitted successfully!");
             setIsOpen(false);
             setReportType("");
@@ -297,7 +295,7 @@ export default function Report() {
         }
     };
 
-    if (!isOpen) {
+    if (!isOpen && !isSubmitting) {
         return (
             <div
                 className="fixed z-50 top-0 right-[15%] pb-1 px-6 bg-red-500 hover:pt-3 hover:pb-4 transition-all rounded-b-[20px] font-bold text-white cursor-pointer text-lg"

@@ -167,7 +167,7 @@ export const getFieldsForType = (type: string) => {
                     name: "evacuationNeeded",
                     label: "Evacuation Needed",
                     type: "switch",
-                    required: true,
+                    required: false,
                 },
                 {
                     name: "estimatedDuration",

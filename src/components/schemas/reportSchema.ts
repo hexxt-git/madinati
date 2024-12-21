@@ -39,7 +39,7 @@ const environmentalHazardSchema = baseSchema.extend({
     hazardType: z.enum(["spill", "airPollution", "noise", "wildlife"]),
     affectedArea: z.number().min(0).max(1000),
     windDirection: z.number().min(0).max(359),
-    evacuationNeeded: z.boolean(),
+    evacuationNeeded: z.any(),
     estimatedDuration: z.object({
         hours: z.string(),
         minutes: z.string(),
