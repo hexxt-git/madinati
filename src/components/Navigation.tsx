@@ -3,6 +3,7 @@
 import LocationPicker from "./LocationPicker";
 import Map from "./MapCard";
 import DirectionsCard from "./DirectionsCard";
+import TrendingCard from "./TrendingCard";
 import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
 import { useState } from "react";
@@ -43,11 +44,10 @@ export default function Navigation() {
                             }
                         }}
                         className="w-full">
-                        <Search className="mr-2 h-4 w-4" />
-                        Find Route
+                        <span className="text-lg -m-s-6">🔎</span> Find Route
                     </Button>
                 </div>
-                <DirectionsCard directions={directions} />
+                {directions.length ? <DirectionsCard directions={directions} /> : <TrendingCard />}
             </div>
             <Options />
         </div>

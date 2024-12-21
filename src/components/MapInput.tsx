@@ -1,4 +1,5 @@
 "use client";
+export const dynamic = 'force-dynamic' 
 
 import { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from "react-leaflet";

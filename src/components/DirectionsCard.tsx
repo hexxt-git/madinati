@@ -18,7 +18,7 @@ export default function DirectionsCard({ directions }: { directions: Direction[]
     return (
         <Card className="shadow-md lg:max-w-[500px]">
             <CardHeader>
-                <CardTitle>Directions</CardTitle>
+                <CardTitle>Directions 🗺️</CardTitle>
             </CardHeader>
             <CardContent>
                 {flat_directions.length ? (

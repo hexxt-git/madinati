@@ -37,8 +37,10 @@ function EmergencyNumbers() {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button variant="link" className="text-red-500 hover:text-red-700 ms-auto">
-                    Emergency Numbers
+                <Button
+                    variant="link"
+                    className="text-red-500 hover:text-red-600 ms-auto font-semibold">
+                    Emergency Contacts
                 </Button>
             </DialogTrigger>
             <DialogContent>
@@ -58,18 +60,27 @@ function EmergencyNumbers() {
                         </div>
                     </a>
                     <a
-                        href="tel:17"
+                        href="tel:1548"
                         className="flex items-center space-x-4 bg-blue-100 p-3 rounded-lg">
                         <AlertTriangle className="h-6 w-6 text-blue-600" />
                         <div>
                             <p className="font-semibold">Police</p>
-                            <p className="text-2xl font-bold">17</p>
+                            <p className="text-2xl font-bold">1548</p>
+                        </div>
+                    </a>
+                    <a
+                        href="tel:1055"
+                        className="flex items-center space-x-4 bg-green-200 p-3 rounded-lg">
+                        <AlertTriangle className="h-6 w-6 text-green-700" />
+                        <div>
+                            <p className="font-semibold">Gendarme (inter-city/rural police)</p>
+                            <p className="text-2xl font-bold">1055</p>
                         </div>
                     </a>
                     <a
                         href="tel:14"
-                        className="flex items-center space-x-4 bg-green-100 p-3 rounded-lg">
-                        <Info className="h-6 w-6 text-green-600" />
+                        className="flex items-center space-x-4 bg-purple-100 p-3 rounded-lg">
+                        <Info className="h-6 w-6 text-purple-600" />
                         <div>
                             <p className="font-semibold">Fire Brigade</p>
                             <p className="text-2xl font-bold">14</p>
@@ -300,7 +311,7 @@ export default function Report() {
     if (!isOpen) {
         return (
             <div
-                className="fixed z-50 top-0 right-[15%] pb-1 px-4 bg-red-500 hover:pt-3 hover:pb-4 transition-all rounded-b-[20px] font-bold text-white cursor-pointer"
+                className="fixed z-50 top-0 right-[15%] pb-1 px-6 bg-red-500 hover:pt-3 hover:pb-4 transition-all rounded-b-[20px] font-bold text-white cursor-pointer text-lg"
                 onClick={() => setIsOpen(true)}>
                 {randomTitle}
             </div>

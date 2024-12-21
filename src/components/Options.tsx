@@ -12,7 +12,7 @@ export default function Options() {
 
   return (
     <Card className="p-4 space-y-6">
-      <h2 className="font-bold text-lg">Options</h2>
+      <h2 className="font-bold text-lg">Options ⚙️</h2>
       
       <div className="space-y-6">
         <div className="space-y-4">

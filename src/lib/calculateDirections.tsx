@@ -44,7 +44,7 @@ function getMethodCostSpeed(
                 method: "bus",
                 cost: 25,
                 speed: 500,
-                icon: Bus,
+                icon: () => <span className="text-2xl">🚌</span>,
                 color: "#FFA500",
                 weight: 1.2,
             };
@@ -53,7 +53,7 @@ function getMethodCostSpeed(
                 method: "tramway",
                 cost: 40,
                 speed: 600,
-                icon: TramFront,
+                icon: () => <span className="text-2xl">🚊</span>,
                 color: "#54A9FF",
                 weight: 1.0,
             };
@@ -62,7 +62,7 @@ function getMethodCostSpeed(
                 method: "metro",
                 cost: 50,
                 speed: 800,
-                icon: Train,
+                icon: () => <span className="text-2xl">🚄</span>,
                 color: "#224488",
                 weight: 0.8,
             };
@@ -71,7 +71,7 @@ function getMethodCostSpeed(
                 method: "telepherique",
                 cost: 30,
                 speed: 400,
-                icon: CableCar,
+                icon: () => <span className="text-2xl">🚡</span>,
                 color: "#8A2BE2",
                 weight: 1.1,
             };
@@ -80,7 +80,7 @@ function getMethodCostSpeed(
                 method: "foot",
                 cost: 0,
                 speed: 40,
-                icon: Footprints,
+                icon: () => <span className="text-2xl">🚶</span>,
                 color: "#40A060",
                 weight: 2.0,
             };
@@ -89,7 +89,7 @@ function getMethodCostSpeed(
                 method: "unknown",
                 cost: 0,
                 speed: 1,
-                icon: () => null,
+                icon: () => <span className="text-2xl">❓</span>,
                 color: "#808080",
                 weight: 3.0,
             };
@@ -185,7 +185,7 @@ function calculateDirections(departure: string, destination: string): Direction[
                         duration: Math.ceil(stepDuration),
                         cost: 0,
                         method: "foot",
-                        icon: Footprints,
+                        icon: () => <span className="text-2xl">🚶</span>,
                         color: "#40A060",
                         from_coords: currentStation.coordinates,
                         to_coords: walkStation.coordinates,
