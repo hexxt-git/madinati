@@ -69,7 +69,7 @@ export default function DirectionsCard({ directions }: { directions: Direction[]
                     </>
                 ) : (
                     <div className="pb-32">
-                        Please select a departure and arriving location and press 'Find Route'
+                        Please select a departure and destination location and press 'Find Route'
                     </div>
                 )}
             </CardContent>

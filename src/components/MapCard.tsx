@@ -13,6 +13,7 @@ L.Marker.prototype.options.icon = L.icon({
 
 export default function MapCard({ directions }: { directions: Direction[] }) {
     const [polylinePositions, setPolylinePositions] = useState<[number, number][]>([]);
+    const [updateCounter, setUpdateCounter] = useState(0);
     const mapRef = useRef<L.Map>(null);
 
     useEffect(() => {
@@ -33,7 +34,7 @@ export default function MapCard({ directions }: { directions: Direction[] }) {
             const averageLon = longitudes.reduce((a, b) => a + b, 0) / longitudes.length;
             mapRef.current?.setView([averageLat, averageLon], 13);
         }
-    }, [directions]);
+    }, [directions, updateCounter]);
 
     return (
         <div className="overflow-hidden rounded-lg shadow-md border">
@@ -42,7 +43,7 @@ export default function MapCard({ directions }: { directions: Direction[] }) {
                 minZoom={10}
                 zoom={13}
                 maxZoom={14}
-                className="w-[520px] h-full"
+                className="w-full h-[400px] lg:w-[520px] lg:h-full"
                 ref={mapRef}>
                 <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
                 {directions.length > 0 && (
