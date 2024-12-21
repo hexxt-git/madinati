@@ -1,4 +1,5 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import {mergePath} from '@/lib/calculateDirections'
 import { ArrowRight } from "lucide-react";
 import type { Direction } from "@/lib/types";
 import React from "react";
@@ -10,8 +11,9 @@ function formatDuration(minutes: number): string {
 }
 
 export default function DirectionsCard({ directions }: { directions: Direction[] }) {
-    const totalDuration = directions.reduce((acc, curr) => acc + curr.duration, 0);
-    const totalCost = directions.reduce((acc, curr) => acc + curr.cost, 0);
+    const flat_directions = mergePath(directions);
+    const totalDuration = flat_directions.reduce((acc, curr) => acc + curr.duration, 0);
+    const totalCost = flat_directions.reduce((acc, curr) => acc + curr.cost, 0);
 
     return (
         <Card className="shadow-md lg:max-w-[500px]">
@@ -19,7 +21,7 @@ export default function DirectionsCard({ directions }: { directions: Direction[]
                 <CardTitle>Directions</CardTitle>
             </CardHeader>
             <CardContent>
-                {directions.length ? (
+                {flat_directions.length ? (
                     <>
                         <div className="grid grid-cols-[6fr_2fr_2fr_1fr] gap-x-4 gap-y-2 font-bold border-b pb-2 items-center px-4">
                             <div className="break-words">Route</div>
@@ -28,13 +30,14 @@ export default function DirectionsCard({ directions }: { directions: Direction[]
                             <div className="break-words text-end">Cost</div>
                         </div>
                         <div className="overflow-auto pb-4 pe-4 lg:max-h-[500px] border-b">
-                            {directions.map((direction, index) => (
+                            {flat_directions.map((direction, index) => (
                                 <div
                                     key={index}
                                     className="grid grid-cols-[1fr_5fr_2fr_2fr_1fr] gap-x-4 gap-y-2 border-b py-2 last:border-b-0 items-center">
                                     <div className="relative group flex justify-evenly items-center w-full h-full ml-2">
                                         {React.createElement(direction.icon, {
                                             className: "h-5 w-5",
+                                            style: { color: direction.color },
                                         } as any)}
                                         <span className="absolute left-0 translate-x-1/2 top-2 bg-black/90 text-white p-2 rounded opacity-0 group-hover:opacity-100 transition-opacity text-xs">
                                             {direction.method} {direction.cost}DA
@@ -65,7 +68,9 @@ export default function DirectionsCard({ directions }: { directions: Direction[]
                         </div>
                     </>
                 ) : (
-                    "Please select a departure and arriving location and press 'Find Route'"
+                    <div className="pb-32">
+                        Please select a departure and arriving location and press 'Find Route'
+                    </div>
                 )}
             </CardContent>
         </Card>

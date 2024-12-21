@@ -13,16 +13,12 @@ export default function Navigation() {
     const [departing_location, set_departing_location] = useState("");
     const [arriving_location, set_arriving_location] = useState("");
     const [directions, set_directions] = useState<Direction[]>([]);
+    console.log({directions})
 
     return (
         <div className="flex flex-col items-center justify-center lg:min-h-screen p-4">
             <div className="grid grid-cols-1 lg:grid-cols-[auto_auto] gap-4">
-                <Map
-                    directions={[
-                        ...directions.map((dir) => dir.from_coords),
-                        ...(directions.at(-1) ? [directions.at(-1)!.to_coords] : []),
-                    ]}
-                />
+                <Map directions={directions} />
                 <div className="space-y-4 h-full">
                     <div className="space-y-2">
                         <LocationPicker

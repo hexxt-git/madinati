@@ -10,4 +10,6 @@ export const locations = places
 export const stations: Station[] = places.map((places) => places.stations).flat();
 export const stationNames = stations
     .map((station) => station.name)
-    .reduce((acc, x) => (acc.includes(x) ? acc : [...acc, x]), [] as string[]);
+    .reduce((acc, x) => (acc.includes(x) ? acc : [...acc, x]), [] as string[]).sort();
+
+console.log(stations.map((station) => station.coordinates));

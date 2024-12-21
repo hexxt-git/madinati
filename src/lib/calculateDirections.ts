@@ -1,8 +1,7 @@
 import { Direction, Station } from "./types";
 import { stations } from "./places";
-import { Bus, Footprints, TramFront, Train, CableCar } from "lucide-react"; // Import necessary icons
+import { Bus, Footprints, TramFront, Train, CableCar } from "lucide-react";
 
-// Helper function to calculate the distance between two coordinates
 function calculateDistance(
     coord1: { lon: number; lat: number },
     coord2: { lon: number; lat: number }
@@ -30,20 +29,20 @@ function findStation(name: string): Station | undefined {
 function getMethodCostSpeed(
     type: string,
     distance: number
-): { method: string; cost: number; speed: number; icon: React.ComponentType } {
+): { method: string; cost: number; speed: number; icon: React.ComponentType; color: string; weight: number } {
     switch (type) {
         case "bus":
-            return { method: "bus", cost: 20, speed: 500, icon: Bus };
+            return { method: "bus", cost: 20, speed: 500, icon: Bus, color: "#FFA500", weight: 1.2 };
         case "tramway":
-            return { method: "tramway", cost: 40, speed: 600, icon: TramFront };
+            return { method: "tramway", cost: 40, speed: 600, icon: TramFront, color: "#54A9FF", weight: 1.0 };
         case "metro":
-            return { method: "metro", cost: 50, speed: 800, icon: Train };
+            return { method: "metro", cost: 50, speed: 800, icon: Train, color: "#224488", weight: 0.8 };
         case "telepherique":
-            return { method: "telepherique", cost: 25, speed: 400, icon: CableCar };
+            return { method: "telepherique", cost: 25, speed: 400, icon: CableCar, color: "#8A2BE2", weight: 1.1 };
         case "foot":
-            return { method: "foot", cost: 0, speed: 80, icon: Footprints };
+            return { method: "foot", cost: 0, speed: 40, icon: Footprints, color: "#40A060", weight: 2.0 };
         default:
-            return { method: "unknown", cost: 0, speed: 1, icon: () => null };
+            return { method: "unknown", cost: 0, speed: 1, icon: () => null, color: "#808080", weight: 3.0 };
     }
 }
 
@@ -67,7 +66,13 @@ function calculateDirections(departure: string, arriving: string): Direction[] {
     const queue: { name: string; duration: number }[] = [{ name: startStation.name, duration: 0 }];
 
     while (queue.length > 0) {
-        queue.sort((a, b) => a.duration - b.duration);
+        queue.sort((a, b) => {
+            const prevA = previous[a.name];
+            const prevB = previous[b.name];
+            const weightA = prevA ? getMethodCostSpeed(prevA.method, 0).weight : 1;
+            const weightB = prevB ? getMethodCostSpeed(prevB.method, 0).weight : 1;
+            return (a.duration * weightA) - (b.duration * weightB);
+        });
         const { name: currentName, duration: currentDur } = queue.shift()!;
         if (currentName === endStation.name) break;
         if (currentDur > durations[currentName]) continue;
@@ -80,7 +85,10 @@ function calculateDirections(departure: string, arriving: string): Direction[] {
             const nextStation = findStation(nextName);
             if (!nextStation) continue;
             const distance = calculateDistance(currentStation.coordinates, nextStation.coordinates);
-            const { method, cost, speed, icon } = getMethodCostSpeed(nextStation.type, distance);
+            const { method, cost, speed, icon, color } = getMethodCostSpeed(
+                nextStation.type,
+                distance
+            );
             const stepDuration = distance / speed;
             const alt = currentDur + stepDuration;
             if (alt < durations[nextName]) {
@@ -93,18 +101,27 @@ function calculateDirections(departure: string, arriving: string): Direction[] {
                     cost,
                     method,
                     icon,
+                    color,
                     from_coords: currentStation.coordinates,
                     to_coords: nextStation.coordinates,
                 };
                 queue.push({ name: nextName, duration: alt });
             }
         }
+        // Walking fallback up to 1400m
+        const walkStations = stations
+            .filter((walkStation) => walkStation.name !== currentStation.name)
+            .map((walkStation) => ({
+                station: walkStation,
+                distance: calculateDistance(currentStation.coordinates, walkStation.coordinates),
+            }))
+            .filter(({ distance }) => distance <= 1400)
+            .filter(({ station }) => !currentStation.leads_to.includes(station.name))
+            .sort((a, b) => a.distance - b.distance);
 
-        // Walking fallback up to 2000m
-        for (const walkStation of stations) {
-            if (walkStation.name === currentStation.name) continue;
-            const distance = calculateDistance(currentStation.coordinates, walkStation.coordinates);
-            if (distance <= 1200) {
+        for (const { station: walkStation, distance } of walkStations) {
+            const existingConnection = currentStation.leads_to.includes(walkStation.name);
+            if (!existingConnection) {
                 const stepDuration = distance / 100;
                 const alt = currentDur + stepDuration;
                 if (alt < durations[walkStation.name]) {
@@ -117,6 +134,7 @@ function calculateDirections(departure: string, arriving: string): Direction[] {
                         cost: 0,
                         method: "foot",
                         icon: Footprints,
+                        color: "#40A060",
                         from_coords: currentStation.coordinates,
                         to_coords: walkStation.coordinates,
                     };
@@ -136,9 +154,12 @@ function calculateDirections(departure: string, arriving: string): Direction[] {
         curr = previous[curr]!.from;
     }
 
+    return path;
+}
+
+function mergePath(path: Direction[]): Direction[]{
     // Merge consecutive tram and metro segments
     const mergedPath: Direction[] = [];
-    let x = 0;
     for (let i = 0; i < path.length; i++) {
         const current = path[i];
         if (mergedPath.length > 0) {
@@ -147,7 +168,10 @@ function calculateDirections(departure: string, arriving: string): Direction[] {
                 (last.method === "tramway" || last.method === "metro") &&
                 (current.method === "tramway" || current.method === "metro")
             ) {
-                last.to = `${current.to} (${++x} station${x > 1 ? "s" : ""})`;
+                // Extract existing station count
+                const match = last.to.match(/\((\d+) station/);
+                const stationCount = match ? parseInt(match[1]) + 1 : 2;
+                last.to = `${current.to} (${stationCount} station${stationCount > 1 ? "s" : ""})`;
                 last.distance += current.distance;
                 last.duration += current.duration;
                 continue;
@@ -159,4 +183,4 @@ function calculateDirections(departure: string, arriving: string): Direction[] {
     return mergedPath;
 }
 
-export { calculateDirections };
+export { calculateDirections, mergePath };

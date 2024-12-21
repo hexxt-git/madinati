@@ -23,4 +23,5 @@ export type Direction = {
     icon: React.ComponentType;
     cost: number;
     method: string;
+    color: string;
 };

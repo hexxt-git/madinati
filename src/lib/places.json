@@ -9,7 +9,10 @@
                     "Place des Martyrs",
                     "Staoueli (Station de bus)",
                     "Place 1er Mai",
-                    "Aïn Benian (Station de bus)"
+                    "Aïn Benian (Station de bus)",
+                    "Les Tamaris",
+                    "Baïnem",
+                    "Bains romains"
                 ],
                 "type": "bus"
             },
@@ -460,7 +463,7 @@
             {
                 "name": "Rabia Tahar (CUB3)",
                 "coordinates": { "lon": 3.183189, "lat": 36.721418 },
-                "leads_to": ["Aissat Idir"],
+                "leads_to": ["Aissat Idir", "Tamaris"],
                 "type": "bus"
             },
             {
@@ -5854,136 +5857,136 @@
         "stations": [
             {
                 "name": "Ruisseau",
-                "coordinates": { "lon": 3.0695, "lat": 36.7489 },
+                "coordinates": { "lon": 3.069722, "lat": 36.748611 },
                 "leads_to": ["Les Fusillés"],
                 "type": "tramway"
             },
             {
                 "name": "Les Fusillés",
-                "coordinates": { "lon": 3.073, "lat": 36.7455 },
+                "coordinates": { "lon": 3.073056, "lat": 36.746944 },
                 "leads_to": ["Ruisseau", "Tripoli-Thaalibia"],
                 "type": "tramway"
             },
             {
                 "name": "Tripoli-Thaalibia",
-                "coordinates": { "lon": 3.0765, "lat": 36.7421 },
+                "coordinates": { "lon": 3.076389, "lat": 36.745278 },
                 "leads_to": ["Les Fusillés", "Tripoli-Mosqué"],
                 "type": "tramway"
             },
             {
                 "name": "Tripoli-Mosqué",
-                "coordinates": { "lon": 3.08, "lat": 36.7387 },
+                "coordinates": { "lon": 3.079722, "lat": 36.743611 },
                 "leads_to": ["Tripoli-Thaalibia", "Tripoli-Hamadache"],
                 "type": "tramway"
             },
             {
                 "name": "Tripoli-Hamadache",
-                "coordinates": { "lon": 3.0835, "lat": 36.7353 },
+                "coordinates": { "lon": 3.083056, "lat": 36.741944 },
                 "leads_to": ["Tripoli-Mosqué", "Tripoli-Maqqaria"],
                 "type": "tramway"
             },
             {
                 "name": "Tripoli-Maqqaria",
-                "coordinates": { "lon": 3.087, "lat": 36.7319 },
+                "coordinates": { "lon": 3.086389, "lat": 36.740278 },
                 "leads_to": ["Tripoli-Hamadache", "Caroubier"],
                 "type": "tramway"
             },
             {
                 "name": "Caroubier",
-                "coordinates": { "lon": 3.0905, "lat": 36.7285 },
+                "coordinates": { "lon": 3.089722, "lat": 36.738611 },
                 "leads_to": ["Tripoli-Maqqaria", "La Glacière"],
                 "type": "tramway"
             },
             {
                 "name": "La Glacière",
-                "coordinates": { "lon": 3.094, "lat": 36.7251 },
+                "coordinates": { "lon": 3.093056, "lat": 36.736944 },
                 "leads_to": ["Caroubier", "Pont El Harrach"],
                 "type": "tramway"
             },
             {
                 "name": "Pont El Harrach",
-                "coordinates": { "lon": 3.0975, "lat": 36.7217 },
+                "coordinates": { "lon": 3.096389, "lat": 36.735278 },
                 "leads_to": ["La Glacière", "Bellevue"],
                 "type": "tramway"
             },
             {
                 "name": "Bellevue",
-                "coordinates": { "lon": 3.101, "lat": 36.7183 },
+                "coordinates": { "lon": 3.099722, "lat": 36.733611 },
                 "leads_to": ["Pont El Harrach", "Bekri Bougerra"],
                 "type": "tramway"
             },
             {
                 "name": "Bekri Bougerra",
-                "coordinates": { "lon": 3.1045, "lat": 36.7149 },
+                "coordinates": { "lon": 3.103056, "lat": 36.731944 },
                 "leads_to": ["Bellevue", "Cinq Maisons"],
                 "type": "tramway"
             },
             {
                 "name": "Cinq Maisons",
-                "coordinates": { "lon": 3.108, "lat": 36.7115 },
+                "coordinates": { "lon": 3.106389, "lat": 36.730278 },
                 "leads_to": ["Bekri Bougerra", "Foire d'Alger"],
                 "type": "tramway"
             },
             {
                 "name": "Foire d'Alger",
-                "coordinates": { "lon": 3.1115, "lat": 36.7081 },
+                "coordinates": { "lon": 3.109722, "lat": 36.728611 },
                 "leads_to": ["Cinq Maisons", "Les Pins"],
                 "type": "tramway"
             },
             {
                 "name": "Les Pins",
-                "coordinates": { "lon": 3.115, "lat": 36.7047 },
+                "coordinates": { "lon": 3.113056, "lat": 36.726944 },
                 "leads_to": ["Foire d'Alger", "Tamaris"],
                 "type": "tramway"
             },
             {
                 "name": "Tamaris",
-                "coordinates": { "lon": 3.1185, "lat": 36.7013 },
+                "coordinates": { "lon": 3.116389, "lat": 36.725278 },
                 "leads_to": ["Les Pins", "Cité Mokhtar Zerhouni"],
                 "type": "tramway"
             },
             {
                 "name": "Cité Mokhtar Zerhouni",
-                "coordinates": { "lon": 3.122, "lat": 36.6979 },
+                "coordinates": { "lon": 3.119722, "lat": 36.723611 },
                 "leads_to": ["Tamaris", "Cité Rabia Tahar"],
                 "type": "tramway"
             },
             {
                 "name": "Cité Rabia Tahar",
-                "coordinates": { "lon": 3.1255, "lat": 36.6945 },
+                "coordinates": { "lon": 3.123056, "lat": 36.721944 },
                 "leads_to": ["Cité Mokhtar Zerhouni", "Université de Bab Ezzouar"],
                 "type": "tramway"
             },
             {
                 "name": "Université de Bab Ezzouar",
-                "coordinates": { "lon": 3.129, "lat": 36.6911 },
+                "coordinates": { "lon": 3.126389, "lat": 36.720278 },
                 "leads_to": ["Cité Rabia Tahar", "Cité 5 juillet"],
                 "type": "tramway"
             },
             {
                 "name": "Cité 5 juillet",
-                "coordinates": { "lon": 3.1325, "lat": 36.6877 },
+                "coordinates": { "lon": 3.129722, "lat": 36.718611 },
                 "leads_to": ["Université de Bab Ezzouar", "Bab Ezzouar - Le Pont"],
                 "type": "tramway"
             },
             {
                 "name": "Bab Ezzouar - Le Pont",
-                "coordinates": { "lon": 3.136, "lat": 36.6843 },
+                "coordinates": { "lon": 3.133056, "lat": 36.716944 },
                 "leads_to": ["Cité 5 juillet", "Cité universitaire - CUB1"],
                 "type": "tramway"
             },
             {
                 "name": "Cité universitaire - CUB1",
-                "coordinates": { "lon": 3.1395, "lat": 36.6809 },
+                "coordinates": { "lon": 3.136389, "lat": 36.715278 },
                 "leads_to": ["Bab Ezzouar - Le Pont", "Cité 8 mai 1945"],
                 "type": "tramway"
             },
             {
                 "name": "Cité 8 mai 1945",
-                "coordinates": { "lon": 3.143, "lat": 36.6775 },
+                "coordinates": { "lon": 3.139722, "lat": 36.713611 },
                 "leads_to": ["Cité universitaire - CUB1", "Cité Clair Matin"],
                 "type": "tramway"
-            },
+            },            
             {
                 "name": "Cité Clair Matin",
                 "coordinates": { "lon": 3.1465, "lat": 36.6741 },
