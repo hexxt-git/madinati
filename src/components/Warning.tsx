@@ -26,9 +26,18 @@ export default function Warning() {
             <Dialog open={isOpen} onOpenChange={setIsOpen}>
                 <DialogContent>
                     <DialogHeader>
-                        <DialogTitle>Beta Information</DialogTitle>
+                        <DialogTitle>Usage Warning</DialogTitle>
                     </DialogHeader>
-                    <p>This application is currently in Beta. Please expect potential issues.</p>
+                    <p>
+                        This application was created in 48 hours. even though the application is
+                        complete and algorithm is functional, it lacks up to date data and may not
+                        be accurate.
+                    </p>
+                    <p>
+                        Please use this application as a reference only and not as a primary source
+                        of information. We are not responsible for any damages or losses caused by
+                        the use of this application.
+                    </p>
                 </DialogContent>
             </Dialog>
         </>

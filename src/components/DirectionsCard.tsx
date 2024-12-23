@@ -27,7 +27,7 @@ export default function DirectionsCard({
     const totalCost = flat_directions.reduce((acc, curr) => acc + curr.cost, 0);
 
     return (
-        <Card className="shadow-md lg:max-w-[500px]">
+        <Card className="lg:max-w-[500px]">
             <CardHeader>
                 <CardTitle className="flex justify-between">
                     Directions 🗺️

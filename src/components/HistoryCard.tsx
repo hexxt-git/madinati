@@ -44,7 +44,7 @@ export default function TrendingCard({
     }, []);
 
     return (
-        <Card className="shadow-md lg:w-[500px] min-h-[300px]">
+        <Card className="lg:w-[500px] min-h-[300px]">
             <CardHeader>
                 <CardTitle>History 🕑 </CardTitle>
             </CardHeader>
@@ -55,7 +55,7 @@ export default function TrendingCard({
                 </div>
 
                 <div className="overflow-auto pb-4 lg:max-h-[500px] border-b">
-                    {history.map((place, index) => (
+                    {history.length ? history.map((place, index) => (
                         <div
                             onClick={() => {
                                 setDestinationLocation(place.to);
@@ -76,7 +76,7 @@ export default function TrendingCard({
                                 </div>
                             </div>
                         </div>
-                    ))}
+                    )) : <div className="text-center opacity-80 pt-12 pb-8">No history</div>}
                 </div>
             </CardContent>
         </Card>

@@ -7,7 +7,7 @@ import { Label } from "./ui/label";
 import { toast } from "sonner";
 
 export default function Options() {
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(true);
 
     const handleChange = () => {
         toast.info("options are still a work in progress");
