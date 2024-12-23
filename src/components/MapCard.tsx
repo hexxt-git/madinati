@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import { MapContainer, TileLayer, Marker, Popup, Polyline } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-import { Direction } from "@/components/schemas/calculations";
+import { Direction } from "@/lib/schemas/calculations";
 
 L.Marker.prototype.options.icon = L.icon({
     iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",

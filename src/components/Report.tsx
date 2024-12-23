@@ -32,7 +32,8 @@ import { Phone, AlertTriangle, Info } from "lucide-react";
 
 import { MapComponent } from "./MapInput";
 import { reportTypes, getFieldsForType } from "./reportFields";
-import { reportSchema, ReportFormData } from "./schemas/reportSchema";
+import { reportSchema, ReportFormData } from "../lib/schemas/reportSchema";
+import Badge from "./Badge";
 function EmergencyNumbers() {
     return (
         <Dialog>
@@ -110,21 +111,10 @@ export default function Report() {
     const titles = [
         "traffic issues?",
         "having trouble?",
-        "slow traffic?",
         "road blockages?",
         "accidents?",
-        "construction work?",
         "road hazards?",
-        "illegal parking?",
-        "potholes?",
-        "missing road signs?",
-        "flooded streets?",
-        "broken traffic lights?",
-        "debris on the road?",
-        "fallen trees?",
-        "road rage incidents?",
-        "dangerous driving?",
-        "other issues?",
+        "an emergency?",
     ];
     const randomTitle = titles[Math.floor(Math.random() * titles.length)];
 
@@ -295,27 +285,24 @@ export default function Report() {
         }
     };
 
-    if (!isOpen && !isSubmitting) {
-        return (
-            <div
-                className="fixed z-50 top-0 right-[15%] pb-1 px-6 bg-red-500 hover:pt-3 hover:pb-4 transition-all rounded-b-[20px] font-bold text-white cursor-pointer text-lg"
-                onClick={() => setIsOpen(true)}>
-                {randomTitle}
-            </div>
-        );
+    if (!isOpen) {
+        if (!isSubmitting)
+            return (
+                <Badge onClick={() => setIsOpen(true)} title={randomTitle} background={"#d25"} />
+            );
+        return <Badge title="Submitting..." background={"#d25b"} />;
     }
 
     return (
         <>
+            <Badge title={randomTitle} background={"#d25b"} />
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
                 <Card className="w-full max-w-5xl max-h-[95vh] overflow-scroll">
                     <CardContent className="p-0">
                         <div className="flex flex-col md:flex-row h-full">
                             <div className="md:w-1/2 p-6 overflow-y-auto">
                                 <div className="flex flex-col lg:flex-row justify-between items-center mb-4">
-                                    <h2 className="text-2xl font-bold">
-                                        Report a Transportation Issue
-                                    </h2>
+                                    <h2 className="text-2xl font-bold">Report a Road Issue</h2>
                                     <EmergencyNumbers />
                                 </div>
                                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">

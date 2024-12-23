@@ -1,23 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Noto_Color_Emoji } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
-
-const geistSans = Geist({
-    variable: "--font-geist-sans",
-    subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
-    subsets: ["latin"],
-});
-
-const notoColorEmoji = Noto_Color_Emoji({
-    variable: "--font-noto-color-emoji",
-    subsets: ["emoji"],
-    weight: "400",
-});
 
 export const metadata: Metadata = {
     title: "Madinati Route Finder Demo - Navigate with Buses, Trains, Tramways, Metros, and On Foot",
@@ -48,9 +31,14 @@ export default function RootLayout({
                 <title>
                     Route Finder - Navigate with Buses, Trains, Tramways, Metros, and On Foot
                 </title>
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Geist:wght@400&family=Geist+Mono:wght@400&family=Twemoji:wght@400&display=swap"
+                    rel="stylesheet"
+                />
             </head>
             <body
-                className={`${geistSans.variable} ${geistMono.variable} ${notoColorEmoji.variable} antialiased`}>
+                className="antialiased"
+                style={{ fontFamily: "'Geist', 'Geist Mono', 'Noto', sans-serif" }}>
                 {children}
                 <Toaster richColors={true} theme="light" position="top-left" />
             </body>

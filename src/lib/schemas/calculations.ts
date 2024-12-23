@@ -19,8 +19,9 @@ export type Direction = {
     to: string;
     to_coords: { lon: number; lat: number };
     distance: number;
+    direction: "north" | "east" | "south" | "west" | "north-east" | "north-west" | "south-east" | "south-west";
     duration: number;
-    icon: React.ComponentType;
+    icon: string;
     cost: number;
     method: string;
     color: string;

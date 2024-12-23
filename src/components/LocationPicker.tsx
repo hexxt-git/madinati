@@ -14,14 +14,17 @@ type LocationPickerProps = {
 };
 
 function getDistance(lat1: number, lon1: number, lat2: number, lon2: number) {
-    const earthRadius = 6371e3; 
+    const earthRadius = 6371e3;
     const lat1Radians = (lat1 * Math.PI) / 180;
     const lat2Radians = (lat2 * Math.PI) / 180;
     const deltaLat = ((lat2 - lat1) * Math.PI) / 180;
     const deltaLon = ((lon2 - lon1) * Math.PI) / 180;
     const a =
         Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) +
-        Math.cos(lat1Radians) * Math.cos(lat2Radians) * Math.sin(deltaLon / 2) * Math.sin(deltaLon / 2);
+        Math.cos(lat1Radians) *
+            Math.cos(lat2Radians) *
+            Math.sin(deltaLon / 2) *
+            Math.sin(deltaLon / 2);
     return earthRadius * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 
@@ -61,7 +64,12 @@ export default function LocationPicker({ location, set_location, label }: Locati
                 let closest = stations[0];
 
                 stations.forEach((st) => {
-                    const dist = getDistance(latitude, longitude, st.coordinates.lat, st.coordinates.lon);
+                    const dist = getDistance(
+                        latitude,
+                        longitude,
+                        st.coordinates.lat,
+                        st.coordinates.lon
+                    );
                     if (dist < minDist) {
                         minDist = dist;
                         closest = st;
@@ -75,17 +83,17 @@ export default function LocationPicker({ location, set_location, label }: Locati
                     set_location(closest.name);
                 }
             },
-            (err) => toast.error('Unable to get GPS information, check your browser permissions'),
+            (err) => toast.error("Unable to get GPS information, check your browser permissions"),
             { enableHighAccuracy: true }
         );
     };
 
     return (
         <div className="relative w-full">
-            <div className="grid grid-cols-[1fr_auto] gap-1">
+            <div className="grid grid-cols-[1fr_auto] gap-1 capitalize">
                 <Input
                     type="search"
-                    placeholder={`Search ${label}...`}
+                    placeholder={`Set ${label} Location...`}
                     value={location}
                     onChange={handleInputChange}
                     onFocus={() => setIsFocused(true)}
@@ -104,10 +112,12 @@ export default function LocationPicker({ location, set_location, label }: Locati
                                 <li
                                     key={l}
                                     className="flex items-center py-2 cursor-pointer hover:bg-gray-100"
-                                    onMouseDown={() => handleSelect(l)}
-                                >
+                                    onMouseDown={() => handleSelect(l)}>
                                     <Check
-                                        className={cn("mx-2 h-5 w-5", location === l ? "opacity-100" : "opacity-0")}
+                                        className={cn(
+                                            "mx-2 h-5 w-5",
+                                            location === l ? "opacity-100" : "opacity-0"
+                                        )}
                                     />
                                     {l}
                                 </li>
