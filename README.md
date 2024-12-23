@@ -21,11 +21,13 @@ Through dynamic route calculations and crowdsourced traffic updates, Madinati of
 [![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=next.js&logoColor=white)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=white)](https://reactjs.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![Leaflet](https://img.shields.io/badge/Leaflet-199900?style=flat&logo=Leaflet&logoColor=white)](https://leafletjs.com/)
+[![Leaflet](https://img.shields.io/badge/Leaflet-199900?style=flat&logo=leaflet&logoColor=white)](https://leafletjs.com/)
 [![Axios](https://img.shields.io/badge/Axios-671ddf?style=flat&logo=nodedotjs&logoColor=white)](https://github.com/axios/axios)
-[![Radix UI](https://img.shields.io/badge/Radix_UI-4A4A55?style=flat)](https://www.radix-ui.com/)
+[![Radix UI](https://img.shields.io/badge/Radix_UI-4A4A55?style=flat&logo=radix-ui&logoColor=white)](https://www.radix-ui.com/)
 [![React Hook Form](https://img.shields.io/badge/React_Hook_Form-EC5990?style=flat&logo=reacthookform&logoColor=white)](https://react-hook-form.com/)
-[![Zod](https://img.shields.io-badge/Zod-3178C6?style=flat&logo=typescript&logoColor=white)](https://github.com/colinhacks/zod)
+[![Zod](https://img.shields.io/badge/Zod-3178C6?style=flat&logo=typescript&logoColor=white)](https://github.com/colinhacks/zod)
+[![shadcn/ui](https://img.shields.io/badge/shadcn/ui-000000?style=flat&logo=shadcn&logoColor=white)](https://shadcn.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
 -   **Next.js**: A React framework for building server-side rendered applications.
 -   **React**: A JavaScript library for building user interfaces.
