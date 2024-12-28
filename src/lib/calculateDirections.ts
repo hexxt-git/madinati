@@ -215,7 +215,7 @@ function mergePath(path: Direction[]): Direction[] {
                 last.to = `${current.to} (${stationCount} station${stationCount > 1 ? "s" : ""})`;
                 last.distance += current.distance;
                 last.duration += current.duration;
-                last.cost += current.cost;
+                last.cost = current.cost;
                 last.to_coords = current.to_coords;
                 return;
             }
