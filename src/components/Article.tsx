@@ -55,26 +55,14 @@ export default function Article() {
                     treasures, Madinati stands as your reliable urban navigation companion, making
                     every journey smoother and more predictable.
                 </p>
-                <h2>Github 😼</h2>
-                <a href="https://github.com/hexxt-git">github.com/hexxt-git</a>
-            </div>
-            <div id="team" className="flex items-center justify-center flex-wrap gap-2 pb-24">
-                <div className="rounded-md border p-2 w-fit h-fit">
-                    <img src="/wail.jpg" alt="" className="h-64 w-64 object-cover" />
-                    Bentafat Wail . Back-End
-                </div>
-                <div className="rounded-md border p-2 w-fit h-fit">
-                    <img src="/salah.jpg" alt="" className="h-64 w-64 object-cover" />
-                    Zeghdani salah . Front-End
-                </div>
-                <div className="rounded-md border p-2 w-fit h-fit">
-                    <img src="/maria.png" alt="" className="h-64 w-64 object-cover" />
-                    Maria Bezzaz . Design
-                </div>
-                <div className="rounded-md border p-2 w-fit h-fit">
-                    <img src="/ramy.png" alt="" className="h-64 w-64 object-cover" />
-                    ramy hadid . Front-End
-                </div>
+                <h2>Open Source 😼</h2>
+                <p>
+                    Discover the source code and become a contributor to the project on GitHub. Your
+                    feedback and contributions are invaluable!{" "}
+                    <a href="https://github.com/hexxt-git/madinati">
+                        github.com/hexxt-git/madinati
+                    </a>
+                </p>
             </div>
         </div>
     );
