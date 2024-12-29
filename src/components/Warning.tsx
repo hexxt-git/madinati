@@ -30,8 +30,8 @@ export default function Warning() {
                     </DialogHeader>
                     <p>
                         This application was created in 48 hours. even though the application is
-                        complete and algorithm is functional, it lacks up to date data and may not
-                        be accurate.
+                        complete and algorithm is functional, it lacks up to date data and may be
+                        inaccurate.
                     </p>
                     <p>
                         Please use this application as a reference only and not as a primary source

@@ -28,6 +28,7 @@ export default function RootLayout({
                 />
                 <meta name="author" content="Your Name or Company" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <link rel="shortcut icon" href="/favicon.png" type="image/png" />
                 <title>
                     Route Finder - Navigate with Buses, Trains, Tramways, Metros, and On Foot
                 </title>

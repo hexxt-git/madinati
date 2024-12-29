@@ -55,7 +55,8 @@ export default function Article() {
                     treasures, Madinati stands as your reliable urban navigation companion, making
                     every journey smoother and more predictable.
                 </p>
-                <h2>The Team 🧍‍♂️🧍‍♂️🧍‍♂️🧍‍♂️</h2>
+                <h2>Github 😼</h2>
+                <a href="https://github.com/hexxt-git">github.com/hexxt-git</a>
             </div>
             <div id="team" className="flex items-center justify-center flex-wrap gap-2 pb-24">
                 <div className="rounded-md border p-2 w-fit h-fit">
